@@ -1,0 +1,45 @@
+<head>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script> 
+<script>
+const inputArea = document.querySelector(".large-area--input");
+const outputArea = document.querySelector(".large-area--output");
+const btnFormat = document.querySelector(".controls__button--format");
+const btnMinify = document.querySelector(".controls__button--minify");
+
+btnFormat.addEventListener("click", () => {
+  const formatted = JSON.stringify(JSON.parse(inputArea.value), null, 4);
+
+  outputArea.value = formatted;
+});
+
+btnMinify.addEventListener("click", () => {
+  const minified = JSON.stringify(JSON.parse(inputArea.value));
+
+  outputArea.value = minified;
+});
+ 
+</script>
+</head>
+<div class="container">
+    
+    <textarea class="large-area large-area--input" placeholder="Enter your JSON here..." [(ngModel)]="str" >
+     {"name": "Dom"}
+
+          </textarea>
+    <div class="controls">
+      <button type="button" class="controls__button controls__button--format" (click)="putDetails(str)">Convert</button>
+      <button type="button" class="controls__button controls__button--minify">Revert</button>
+    </div>
+    <textarea   class="large-area large-area--output" placeholder="Your JSON will appear here...">
+        {{jsonObject   }}
+        
+        </textarea>
+  </div>
+  
